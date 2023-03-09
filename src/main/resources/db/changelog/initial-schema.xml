@@ -8,7 +8,7 @@
 
 
     <changeSet id="00000000000001" author="Park Hyeonjun">
-        <createTable tableName="user">
+        <createTable tableName="e_user">
             <column name="id" type="bigint" autoIncrement="true">
                 <constraints primaryKey="true" nullable="false"/>
             </column>
@@ -30,7 +30,7 @@
 
         <addNotNullConstraint   columnName="password"
                                 columnDataType="varchar(60)"
-                                tableName="user"/>
+                                tableName="e_user"/>
     </changeSet>
 
 </databaseChangeLog>

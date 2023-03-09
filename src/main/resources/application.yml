@@ -14,3 +14,9 @@ spring:
     hikari:
       poolName: Hikari
       auto-commit: false
+  jpa:
+    spring.jpa.database-platform: org.hibernate.dialect.H2Dialect
+  liquibase:
+    contexts: dev, faker
+    change-log: classpath:db/master.xml
+    url: jdbc:h2:mem:commerce_sample

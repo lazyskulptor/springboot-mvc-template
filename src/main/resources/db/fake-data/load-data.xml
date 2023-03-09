@@ -11,7 +11,7 @@
                   file="db/fake-data/user.csv"
                   separator=";"
                   quotchar="'" 
-                  tableName="user"
+                  tableName="e_user"
                   usePreparedStatements="true">
             <column name="id" type="string"/>
             <column name="username" type="string"/>
