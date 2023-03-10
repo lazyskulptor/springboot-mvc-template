@@ -13,7 +13,7 @@
                   quotchar="'" 
                   tableName="account"
                   usePreparedStatements="true">
-            <column name="id" type="string"/>
+            <column name="id" type="numeric"/>
             <column name="username" type="string"/>
             <column name="password" type="string"/>
             <column name="email" type="string"/>
@@ -22,6 +22,25 @@
             <column name="enabled" type="boolean"/>
             <column name="created_at" type="date"/>
             <column name="updated_at" type="date"/>
+        </loadData>
+
+        <loadData
+                  file="db/fake-data/authority.csv"
+                  separator=";"
+                  quotchar="'"
+                  tableName="authority"
+                  usePreparedStatements="true">
+            <column name="name" type="string"/>
+        </loadData>
+
+        <loadData
+                  file="db/fake-data/relation_account_authority.csv"
+                  separator=";"
+                  quotchar="'"
+                  tableName="rel_account_authority"
+                  usePreparedStatements="true">
+            <column name="account_id" type="numeric"/>
+            <column name="username" type="string"/>
         </loadData>
     </changeSet>
 </databaseChangeLog>
