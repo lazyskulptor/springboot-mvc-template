@@ -1,22 +1,20 @@
-server:
-  port: 8080
-
 spring:
   devtools:
     restart:
       enabled: true
-
+      additional-exclude: static/**,.h2.server.properties
   datasource:
     type: com.zaxxer.hikari.HikariDataSource
-    url: jdbc:h2:mem:commerce_sample;DB_CLOSE_DELAY=-1;DB_CLOSE_ON_EXIT=FALSE;MODE=LEGACY
+    url: jdbc:h2:file:./build/h2db/db/ecommerce;DB_CLOSE_DELAY=-1
     username: sa
     password:
     hikari:
       poolName: Hikari
       auto-commit: false
-  jpa:
-    spring.jpa.database-platform: org.hibernate.dialect.H2Dialect
+  h2:
+    console:
+      enabled: true
   liquibase:
     contexts: dev, faker
     change-log: classpath:db/master.xml
-    url: jdbc:h2:mem:commerce_sample
+    url: jdbc:h2:file:./build/h2db/db/ecommerce;DB_CLOSE_DELAY=-1
