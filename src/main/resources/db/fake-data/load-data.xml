@@ -32,15 +32,5 @@
                   usePreparedStatements="true">
             <column name="name" type="string"/>
         </loadData>
-
-        <loadData
-                  file="db/fake-data/relation_account_authority.csv"
-                  separator=";"
-                  quotchar="'"
-                  tableName="rel_account_authority"
-                  usePreparedStatements="true">
-            <column name="account_id" type="numeric"/>
-            <column name="username" type="string"/>
-        </loadData>
     </changeSet>
 </databaseChangeLog>

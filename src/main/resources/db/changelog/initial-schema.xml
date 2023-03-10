@@ -32,7 +32,7 @@
                                 columnDataType="varchar(60)"
                                 tableName="account"/>
 
-        <createTable tableName="rel_account_authority">
+        <createTable tableName="authority">
             <column name="account_id" type="bigint">
                 <constraints nullable="false"/>
             </column>
@@ -41,22 +41,10 @@
             </column>
         </createTable>
 
-        <createTable tableName="authority">
-            <column name="name" type="varchar(50)">
-                <constraints primaryKey="true" nullable="false"/>
-            </column>
-        </createTable>
-
-        <addPrimaryKey columnNames="account_id, authority_name" tableName="rel_account_authority"/>
-
-        <addForeignKeyConstraint baseColumnNames="authority_name"
-                                 baseTableName="rel_account_authority"
-                                 constraintName="fk_authority_name"
-                                 referencedColumnNames="name"
-                                 referencedTableName="authority"/>
+        <addPrimaryKey columnNames="account_id, authority_name" tableName="authority"/>
 
         <addForeignKeyConstraint baseColumnNames="account_id"
-                                 baseTableName="rel_account_authority"
+                                 baseTableName="authority"
                                  constraintName="fk_account_id"
                                  referencedColumnNames="id"
                                  referencedTableName="account"/>

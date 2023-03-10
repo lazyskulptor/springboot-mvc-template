@@ -3,12 +3,17 @@ package user.lazyskulptor.ecommerce.domain.model;
 import java.time.LocalDateTime;
 import java.util.Set;
 
+import javax.persistence.CollectionTable;
+import javax.persistence.Column;
 import javax.persistence.ElementCollection;
 import javax.persistence.Entity;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.JoinTable;
+import javax.persistence.JoinColumn;
 
 import org.springframework.data.annotation.CreatedDate;
 import org.springframework.data.annotation.LastModifiedDate;
@@ -47,9 +52,11 @@ public class Account {
 
 	private Boolean enabled;
 
-	@ElementCollection
-	@JoinTable(name = "rel_account_authority")
-	private Set<Authority> authority;
+	@CollectionTable(name = "authority", joinColumns = @JoinColumn(name = "account_id"))
+	@ElementCollection(fetch = FetchType.EAGER)
+	@Column(name = "authority_name")
+	@Enumerated(EnumType.STRING)
+	private Set<Authority> authorities;
 
 	@CreatedDate
 	private LocalDateTime createdAt;
