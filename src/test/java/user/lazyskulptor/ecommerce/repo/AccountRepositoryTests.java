@@ -15,7 +15,7 @@ import user.lazyskulptor.ecommerce.config.LiquibaseConfig;
  * AccountRepositoryTests
  */
 @Import(LiquibaseConfig.class)
-@DataJpaTest(properties = "spring.config.location=classpath:/application.yml")
+@DataJpaTest(properties = "spring.config.location=classpath:/application-test.yml")
 public class AccountRepositoryTests {
 
 	@Autowired
