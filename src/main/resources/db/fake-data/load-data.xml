@@ -6,12 +6,12 @@
     xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-4.6.xsd
                         http://www.liquibase.org/xml/ns/dbchangelog-ext http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-ext.xsd">
 
-    <changeSet id="00000000000001-load-user" author="Park Hyeonjun" context="faker">
+    <changeSet id="00000000000001-load-account" author="Park Hyeonjun" context="faker">
         <loadData
-                  file="db/fake-data/user.csv"
+                  file="db/fake-data/account.csv"
                   separator=";"
                   quotchar="'" 
-                  tableName="e_user"
+                  tableName="account"
                   usePreparedStatements="true">
             <column name="id" type="string"/>
             <column name="username" type="string"/>

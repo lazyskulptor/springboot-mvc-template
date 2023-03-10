@@ -12,14 +12,14 @@ import org.springframework.context.annotation.Import;
 import user.lazyskulptor.ecommerce.config.LiquibaseConfig;
 
 /**
- * UserRepositoryTests
+ * AccountRepositoryTests
  */
 @Import(LiquibaseConfig.class)
 @DataJpaTest(properties = "spring.config.location=classpath:/application.yml")
-public class UserRepositoryTests {
+public class AccountRepositoryTests {
 
 	@Autowired
-	UserRepository repo;
+	AccountRepository repo;
 
 	@Test
 	void testFind() throws SQLException {

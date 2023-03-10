@@ -19,17 +19,16 @@ import lombok.NoArgsConstructor;
 import lombok.ToString;
 
 /**
- * User
+ * Account
  */
 @Entity
-@Table(name = "e_user")
 @Builder(toBuilder = true)
 @Getter
 @ToString
 @EqualsAndHashCode
 @NoArgsConstructor
 @AllArgsConstructor
-public class User {
+public class Account {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)

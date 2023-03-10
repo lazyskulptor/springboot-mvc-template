@@ -8,15 +8,15 @@
 
 
     <changeSet id="00000000000001" author="Park Hyeonjun">
-        <createTable tableName="e_user">
+        <createTable tableName="account">
             <column name="id" type="bigint" autoIncrement="true">
                 <constraints primaryKey="true" nullable="false"/>
             </column>
             <column name="username" type="varchar(191)">
-                <constraints unique="true" nullable="true" uniqueConstraintName="ux_user_username"/>
+                <constraints unique="true" nullable="true" uniqueConstraintName="ux_account_username"/>
             </column>
             <column name="email" type="varchar(191)">
-                <constraints unique="true" nullable="true" uniqueConstraintName="ux_user_email"/>
+                <constraints unique="true" nullable="true" uniqueConstraintName="ux_account_email"/>
             </column>
             <column name="password" type="varchar(60)"/>
             <column name="first_name" type="varchar(50)"/>
@@ -30,7 +30,7 @@
 
         <addNotNullConstraint   columnName="password"
                                 columnDataType="varchar(60)"
-                                tableName="e_user"/>
+                                tableName="account"/>
     </changeSet>
 
 </databaseChangeLog>
