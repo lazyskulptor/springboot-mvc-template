@@ -31,6 +31,23 @@
         <addNotNullConstraint   columnName="password"
                                 columnDataType="varchar(60)"
                                 tableName="account"/>
+
+        <createTable tableName="authority">
+            <column name="account_id" type="bigint">
+                <constraints nullable="false"/>
+            </column>
+            <column name="authority_name" type="varchar(50)">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+
+        <addPrimaryKey columnNames="account_id, authority_name" tableName="authority"/>
+
+        <addForeignKeyConstraint baseColumnNames="account_id"
+                                 baseTableName="authority"
+                                 constraintName="fk_account_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="account"/>
     </changeSet>
 
 </databaseChangeLog>
