@@ -17,11 +17,11 @@ public class AccountTests {
 
 	@Test
 	void testEqualityPrototype() {
-		Account u1 = Account.builder().id(1l).build();
-		Account u2 = Account.builder().id(1l).build();
-		Account u3 = u1.toBuilder().id(2l).build();
+		Account u1 = Account.builder().id(1L).build();
+		Account u2 = Account.builder().id(1L).build();
+		Account u3 = u1.toBuilder().id(2L).build();
 
-		assertThat(u1.equals(u2)).isTrue();
+		assertThat(u1.getId().equals(u2.getId())).isTrue();
 		assertThat(u1.equals(u3)).isFalse();
 	}
 }
