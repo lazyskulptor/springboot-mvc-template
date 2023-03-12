@@ -16,7 +16,7 @@ import org.springframework.transaction.annotation.EnableTransactionManagement;
  */
 @Configuration
 @EnableJpaRepositories({ "user.lazyskulptor.ecommerce.repo" })
-@EnableJpaAuditing(auditorAwareRef = "auditorProvider")
+@EnableJpaAuditing
 @EnableTransactionManagement
 public class LiquibaseConfig {
 
