@@ -1,2 +1,9 @@
 server:
   port: 8080
+
+custom:
+  security:
+    jwt:
+      secret: 3ff703d7d42cb7aa9ecebb1e940719d166fbf6ba94cd4de911ac5bbe42d7288c8de48f372b5a738cb33c03d4c1d99df6cc4615fa90e141f2262a3dad0b9eaf50
+      token-validity-in-seconds: 86400
+      token-validity-in-seconds-for-remember-me: 2592000
