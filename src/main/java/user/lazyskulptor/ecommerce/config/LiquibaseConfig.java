@@ -7,11 +7,17 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
 import liquibase.integration.spring.SpringLiquibase;
+import org.springframework.data.jpa.repository.config.EnableJpaAuditing;
+import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
+import org.springframework.transaction.annotation.EnableTransactionManagement;
 
 /**
  * LiquibaseConfig
  */
 @Configuration
+@EnableJpaRepositories({ "user.lazyskulptor.ecommerce.repo" })
+@EnableJpaAuditing(auditorAwareRef = "auditorProvider")
+@EnableTransactionManagement
 public class LiquibaseConfig {
 
 	@Bean
