@@ -1,6 +1,7 @@
 package user.lazyskulptor.ecommerce.security.jwt;
 
 import io.jsonwebtoken.*;
+import io.jsonwebtoken.io.Decoders;
 import io.jsonwebtoken.security.Keys;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Value;
@@ -17,6 +18,7 @@ import java.security.Key;
 import java.util.Arrays;
 import java.util.Collection;
 import java.util.Date;
+import java.util.Objects;
 import java.util.stream.Collectors;
 
 @Component
@@ -35,8 +37,11 @@ public class TokenProvider {
 
     private long tokenValidityInMillisecondsForRememberMe;
 
-    @Value("${custom.security.jwt.secret:basicJwtSecret-it-has-to-be-overwritten}")
+    @Value("${custom.security.jwt.secret:this-is-basic=jwt-secret-key-it-has-to-be-overwritten-you-can-use= command-openssl rand -hex 64}")
     private String secret;
+
+    @Value("${custom.security.jwt.base64-secret:}")
+    private String base64Secret;
     @Value("${custom.security.jwt.token-validity-in-seconds:1800}")
     private Integer validity = 1800;
     @Value("${custom.security.jwt.token-validity-in-seconds-for-remember-me:2592000}")
@@ -44,9 +49,10 @@ public class TokenProvider {
 
     @PostConstruct
     private void init() {
-        log.info("secret: {}", secret);
-        byte[] keyBytes;
-        keyBytes = secret.getBytes(StandardCharsets.UTF_8);
+        final boolean isBase64Encoded = !Objects.isNull(base64Secret) && !base64Secret.isBlank();
+        if (!isBase64Encoded) log.warn("The JWT Key used is not Base64-encoded");
+        final byte[] keyBytes = isBase64Encoded ? Decoders.BASE64.decode(base64Secret) : secret.getBytes(StandardCharsets.UTF_8);
+
         key = Keys.hmacShaKeyFor(keyBytes);
         jwtParser = Jwts.parserBuilder().setSigningKey(key).build();
         this.tokenValidityInMilliseconds = 1000L * validity;
