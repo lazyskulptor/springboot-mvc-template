@@ -9,7 +9,7 @@ jib {
         }
     }
     to {
-        image = "boot-template:latest"
+        image = "lazyskulptor/boot-template:latest"
     }
     container {
         entrypoint = ["bash", "-c", "/entrypoint.sh"]
