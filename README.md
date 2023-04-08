@@ -19,3 +19,15 @@ docker run -itd --name boot-demo lazyskulptor/boot-template # run with h2 databa
 
 docker-compose -f src/main/docker/app.yml up -d # run with mysql
 ```
+
+#### How to run with Keycloak
+```bash
+ # run keycloak with port 9080, default username and password is admin / admin
+ docker-compose -f src/main/docker/keycloak.yml up -d
+ # run project with dev profile
+ ./gradlew
+```
+- after booting services, access any endpoint on port 8080
+- login with username `admin`, password `admin` in redirected login page.
+- page will show up with token
+- endpoint `/api` can be called with `GET` method and Bearer Authorization token
