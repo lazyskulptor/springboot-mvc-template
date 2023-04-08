@@ -9,6 +9,11 @@ services:
       - SPRING_LIQUIBASE_URL=jdbc:mysql://mysql:3306/ecommerce?useUnicode=true&characterEncoding=utf8&useSSL=false&allowPublicKeyRetrieval=true&useLegacyDatetimeCode=false&serverTimezone=UTC&createDatabaseIfNotExist=true
       - SPRING_DATASOURCE_USERNAME=dbuser
       - SPRING_DATASOURCE_PASSWORD=mysecretpassword
+      - SPRING_SECURITY_OAUTH2_CLIENT_PROVIDER_OIDC_ISSUER_URI=http://keycloak:9080/realms/ecommerce
+      - SPRING_SECURITY_OAUTH2_CLIENT_REGISTRATION_OIDC_CLIENT_ID=account
+      - SPRING_SECURITY_OAUTH2_CLIENT_REGISTRATION_OIDC_SCOPE=openid, profile, email, offline_access
+      - SPRING_SECURITY_OAUTH2_CLIENT_REGISTRATION_OIDC_CLIENT_SECRET=ecommerce_test_secret
+      - SPRING_SECURITY_OAUTH2_RESOURCESERVER_JWT_ISSUER-URI=http://keycloak:9080/realms/ecommerce/.well-known/openid-configuration
       - WAITING_TIME_DEPENDENT_SERVICES=10 # gives time for other services to boot before the application
     # If you want to expose these ports outside your dev PC,
     # remove the "127.0.0.1:" prefix
@@ -29,3 +34,20 @@ services:
     ports:
       - 127.0.0.1:3306:3306
     command: mysqld --lower_case_table_names=1 --skip-ssl --character_set_server=utf8mb4 --explicit_defaults_for_timestamp
+  keycloak:
+    image: quay.io/keycloak/keycloak:21.0.1-0
+    command: ['start-dev --import-realm']
+    volumes:
+      - ./keycloak:/opt/keycloak/data/import
+    environment:
+      - KC_DB=dev-file
+      - KEYCLOAK_ADMIN=admin
+      - KEYCLOAK_ADMIN_PASSWORD=admin
+      - KC_FEATURES=scripts
+      - KC_HTTP_PORT=9080
+      - KC_HTTPS_PORT=9443
+    # If you want to expose these ports outside your dev PC,
+    # remove the "127.0.0.1:" prefix
+    ports:
+      - 127.0.0.1:9080:9080
+      - 127.0.0.1:9443:9443

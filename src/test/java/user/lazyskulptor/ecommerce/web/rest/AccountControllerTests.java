@@ -8,12 +8,14 @@ import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc;
 import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.security.test.context.support.WithMockUser;
 import org.springframework.test.web.servlet.MockMvc;
 
 /**
  * AccountControllerTests
  */
-@SpringBootTest(properties = "spring.config.location=classpath:/application.yml")
+@WithMockUser
+@SpringBootTest(properties = "spring.config.location=classpath:/application-test.yml")
 @AutoConfigureMockMvc
 public class AccountControllerTests {
 
