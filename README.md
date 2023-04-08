@@ -19,3 +19,8 @@ docker run -itd --name boot-demo lazyskulptor/boot-template # run with h2 databa
 
 docker-compose -f src/main/docker/app.yml up -d # run with mysql
 ```
+
+---
+## Security Integration
+- [with user table and JWT](https://github.com/lazyskulptor/springboot-mvc-template/tree/feat-security-jwt)
+- [with Oauth2 by Keycloak](https://github.com/lazyskulptor/springboot-mvc-template/tree/feat-security-oauth2)
