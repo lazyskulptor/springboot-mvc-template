@@ -30,5 +30,7 @@ spring:
           oidc:
             issuer-uri: http://localhost:9080/realms/ecommerce
       resourceserver:
-        jwt:
-          issuer-uri: http://localhost:9080/realms/ecommerce
+        opaquetoken:
+          introspection-uri: http://localhost:9080/realms/ecommerce/protocol/openid-connect/token/introspect
+          client-id: account
+          client-secret: ecommerce_test_secret

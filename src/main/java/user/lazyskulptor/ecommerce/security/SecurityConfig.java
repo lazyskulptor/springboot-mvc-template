@@ -47,12 +47,10 @@ public class SecurityConfig {
                     mapper.writeValue(writer, Map.of("token", user.getIdToken().getTokenValue()));
                     writer.close();
                 })
+            .and().oauth2Client()
             .and()
                 .oauth2ResourceServer()
-                .jwt()
-                .and()
-            .and()
-                .oauth2Client();
+                .opaqueToken();
         return http.build();
     }
 }
